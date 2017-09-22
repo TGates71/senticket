@@ -1,0 +1,30 @@
+<?php
+// SenTicket for Sentora CP
+// Rebuilt By       : TGates
+// Original Author  : Diablo925
+ 
+require_once('cnf/db.php');
+require_once('dryden/db/driver.class.php');
+require_once('dryden/debug/logger.class.php');
+require_once('dryden/runtime/dataobject.class.php');
+require_once('dryden/sys/versions.class.php');
+require_once('dryden/ctrl/options.class.php');
+require_once('dryden/ctrl/auth.class.php');
+require_once('dryden/ctrl/users.class.php');
+require_once('dryden/fs/director.class.php');
+require_once('inc/dbc.inc.php');
+
+
+//Remove
+removeModule();
+
+function removeModule()
+{
+	global $zdbh, $controller;
+	
+	$numrows = $zdbh->prepare("DROP TABLE sentora_core.x_ticket");
+	$numrows->execute();
+}
+// remove SenTicket Admin
+exec("$zsudo zppy remove senticket_admin");
+?>

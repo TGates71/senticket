@@ -1,0 +1,126 @@
+<!--
+// SenTicket for Sentora CP
+// Rebuilt By       : TGates
+// Original Author  : Diablo925
+-->
+<div class="zmodule_content panel" id="zmodule_header_<@ ModuleName @>">
+    <div class="panel-heading">
+        <img src="<@ ModuleIcon @>" width="35" height="35" border="0" alt="<@ ModuleName @>">
+
+        <div class="zmodule_title">
+            <@ ModuleName @>
+        </div>
+
+        <div class="zmodule_desc" id="zmodule_desc_<@ ModuleName @>"><@ ModuleDesc @></div>
+
+    </div>
+	
+	<@ Result @>
+
+	<form action="./?module=simple_support_ticket&action=select" method="post">
+	<button class="button-loader btn btn-primary" type="submit" id="button" name="inMyTicket" id="inMyTicket" value="inMyTicket"><: My Tickets :></button>
+	<button class="button-loader btn btn-primary" type="submit" id="button" name="inNewTicket" id="inNewTicket" value="inNewTicket"><: New ticket :></button>
+	<@ CSFR_Tag @>
+	</form>
+	
+    <div class="zform_wrapper">
+		<p></p>
+		<form action="./?module=simple_support_ticket&action=read" method="post">
+		<table class="table table-striped">
+			<tr>
+				<th><: Ticket number :></th>
+				<th><: Subject :></th>
+				<th><: Domain :></th>
+				<th><: Status :></th>
+				<th> </th>
+			</tr>
+		<% loop TicketList %>
+			<tr>
+				<td><& ticketnumber &></td>
+				<td><& ticketsubject &></td>
+				<td><& ticketdomain &></td>
+				<td><& ticketstatus &></td>
+				<td><input type="hidden" value="<& ticketnumber &>" name="innumber"><button class="button-loader btn btn-primary" type="submit" name="inRead" id="inRead" value="inRead"><: View :></button></td>
+			</tr>
+		<% endloop %>
+		</table>
+			<@ CSFR_Tag @>
+		</form>
+		
+		<% if isread %>
+		<h3><: View Ticket :>:</h3>
+		<form action="./?module=simple_support_ticket&action=UpdateTicket" method="post">
+            <table class="table table-striped">
+			<% loop Ticket %>
+				<tr>
+                    <th><: Ticket number :>:</th>
+                    <td>
+                        <& Ticket_number &>
+                    </td>
+                </tr>
+				<tr>
+                    <th><: Domain :>:</th>
+                    <td>
+                        <& Ticket_domain &>
+                    </td>
+                </tr>
+				<tr>
+					<th><: Subject :>:</th>
+					<td><& Ticket_subject &></td>
+                <tr>
+                    <th><: Messages :>:</th>
+                    <td><& Ticket_msg &></td>
+                </tr>
+				<tr>
+                    <th><: Reply :>:</th>
+                    <td><textarea name="inMessage" id="inMessage" rows="3" cols="80" /></textarea></td>
+                </tr>
+				<tr>
+                    <th colspan="2" align="right">
+					<input type="hidden" value="<& Ticket_number &>" name="innumber">
+                        <button class="button-loader add-row btn btn-primary" type="submit" name="inSave" id="button"><: Send Ticket :></button>
+                    </th>
+                </tr>
+				<% endif %>
+            </table>
+				<@ CSFR_Tag @>
+        </form>
+		<% endif %>
+		
+		
+		<% if isNewTicket %>
+		<h3><: New Ticket :>:</h3>
+        <form action="./?module=simple_support_ticket&action=SendTicket" method="post">
+            <table class="table table-striped">
+				<tr>
+                    <th><: Select Domain :>:</th>
+                    <td>
+                        <select name="inDomain" id="inDomain">
+                            <% loop DomainList %>
+                            <option value="<& dname &>"><& dname &></option>
+                            <% endloop %>
+                        </select>
+                    </td>
+                </tr>
+				<tr>
+					<th><: Subject :>:</th>
+					<td><input type="text" name="inSubject" id="inSubject" value="" /></td>
+                <tr>
+                    <th><: Message :>:</th>
+                    <td><textarea name="inMessage" id="inMessage" rows="3" cols="80" /></textarea></td>
+                </tr>
+                <tr>
+                    <th colspan="2" align="right">
+                        <button class="button-loader add-row btn btn-primary" type="submit" name="inSave" id="button"><: Send Ticket :></button>
+                    </th>
+                </tr>
+            </table>
+				<@ CSFR_Tag @>
+        </form>
+		<% endif %>
+		
+    </div>
+	<div>
+		<@ Copyright @>
+	</div>
+</div>

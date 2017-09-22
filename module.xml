@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<module>
+    <name>SenTicket</name>
+    <version>200</version>
+    <defaultcat>Account information</defaultcat>
+    <type>user</type>
+	<ostype>all</ostype>
+    <desc>Send support tickets to your hosting provider.</desc>
+    <authorname>Diablo925, TGates</authorname>
+    <authoremail>Carsten@alio.dk</authoremail>
+    <authorurl>http://forums.sentora.org/showthread.php?tid=4037</authorurl>
+    <updateurl>http://zppy-repo.mach-hosting.com/repo/senticket.xml</updateurl>
+</module>

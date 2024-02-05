@@ -17,7 +17,7 @@
 	
 	<@ Result @>
 
-	<form action="./?module=simple_support_ticket&action=select" method="post">
+	<form action="./?module=senticket&action=select" method="post">
 	<button class="button-loader btn btn-primary" type="submit" id="button" name="inMyTicket" id="inMyTicket" value="inMyTicket"><: My Tickets :></button>
 	<button class="button-loader btn btn-primary" type="submit" id="button" name="inNewTicket" id="inNewTicket" value="inNewTicket"><: New ticket :></button>
 	<@ CSFR_Tag @>
@@ -25,7 +25,7 @@
 	
     <div class="zform_wrapper">
 		<p></p>
-		<form action="./?module=simple_support_ticket&action=read" method="post">
+		<form action="./?module=senticket&action=read" method="post">
 		<table class="table table-striped">
 			<tr>
 				<th><: Ticket number :></th>
@@ -49,7 +49,7 @@
 		
 		<% if isread %>
 		<h3><: View Ticket :>:</h3>
-		<form action="./?module=simple_support_ticket&action=UpdateTicket" method="post">
+		<form action="./?module=senticket&action=UpdateTicket" method="post">
             <table class="table table-striped">
 			<% loop Ticket %>
 				<tr>
@@ -90,7 +90,7 @@
 		
 		<% if isNewTicket %>
 		<h3><: New Ticket :>:</h3>
-        <form action="./?module=simple_support_ticket&action=SendTicket" method="post">
+        <form action="./?module=senticket&action=SendTicket" method="post">
             <table class="table table-striped">
 				<tr>
                     <th><: Select Domain :>:</th>
